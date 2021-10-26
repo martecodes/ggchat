@@ -70,35 +70,40 @@ module.exports = (app, passport, db) => {
 // message board routes ===============================================================
 
     app.post('/valorant', (req, res) => {
-      db.collection('valorant').insert({ name: req.user.local.email, msg: req.body.msg}, (err, result) => {
+      let user = req.user
+      db.collection('valorant').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/valorant')
       })
     })
     app.post('/apex', (req, res) => {
-      db.collection('apex').insert({ name: req.user.local.email, msg: req.body.msg}, (err, result) => {
+      let user = req.user
+      db.collection('apex').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/apex')
       })
     })
     app.post('/warzone', (req, res) => {
-      db.collection('warzone').insert({ name: req.user.local.email, msg: req.body.msg}, (err, result) => {
+      let user = req.user
+      db.collection('warzone').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/warzone')
       })
     })
     app.post('/csgo', (req, res) => {
-      db.collection('csgo').insert({ name: req.user.local.email, msg: req.body.msg}, (err, result) => {
+      let user = req.user
+      db.collection('csgo').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/csgo')
       })
     })
     app.post('/overwatch', (req, res) => {
-      db.collection('overwatch').insert({ name: req.user.local.email, msg: req.body.msg}, (err, result) => {
+      let user = req.user
+      db.collection('overwatch').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/overwatch')
