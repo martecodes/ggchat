@@ -13,7 +13,7 @@
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-1 text-center">Welcome to GG Chat</h1>
+        <h1 class="display-1 text-center">Welcome to the Warzone Chat</h1>
         <div>
     
             <div class="text-center">
@@ -27,15 +27,9 @@
             <h3>Chat</h3>
             <% for(var i=0; i<warzone.length; i++) {%>
                 <li class="message">
-                    <strong>
-                        <span>
-                            <%= warzone[i].name%>:
-                        </span>
-                    </strong>
-
-                    <span>
-                        <%= warzone[i].msg %>
-                    </span>
+                    <span><strong><%= warzone[i].name%>:<strong></span>
+                    <span class="msg"><%= warzone[i].msg %></span>
+                    <span class="font-weight-light time"><%=warzone[i].time%></span>
                 </li>
                 <% } %>
         </ul>

@@ -1,3 +1,55 @@
 .list{
     list-style: none;
 }
+
+.time{
+    font-size: x-small;
+}
+
+.msg{
+    font-size:large;
+}
+
+.valorant{
+    background-image: url('img/valorant.png');
+    background-size: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.warzone{
+    background-image: url('img/warzone.png');
+    background-size: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.apex{
+    background-image: url('img/apex.png');
+    background-size: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.csgo{
+    background-image: url('img/csgo.png');
+    background-size: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.overwatch{
+    background-image: url('img/overwatch.png');
+    background-size: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 3%;
+}
+
+.chat-btn{
+    box-shadow: 2px 2px 2px 2px black;
+}

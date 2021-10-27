@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="jumbotron">
-      <h1 class="display-1 text-center">Welcome to GG Chat</h1>
+      <h1 class="display-1 text-center">Welcome to the Valorant Chat</h1>
       <div>
     
         <div class="text-center">
@@ -27,11 +28,9 @@
           <h3>Chat</h3>
           <% for(var i=0; i<valorant.length; i++) {%>
             <li class="message">
-            <strong>
-              <span><%= valorant[i].name%>:</span>
-            </strong>
-
-              <span><%= valorant[i].msg %></span>
+              <span><strong><%= valorant[i].name%>:</strong></span>
+              <span class="msg"><%= valorant[i].msg %></span>
+              <span class="font-weight-light time"><%=valorant[i].time%></span>
           </li>
           <% } %>
         </ul>

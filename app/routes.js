@@ -71,7 +71,9 @@ module.exports = (app, passport, db) => {
 
     app.post('/valorant', (req, res) => {
       let user = req.user
-      db.collection('valorant').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
+      let time = (new Date()).toLocaleString()
+
+      db.collection('valorant').insert({ name: user.local.username, msg: req.body.msg, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/valorant')
@@ -79,7 +81,9 @@ module.exports = (app, passport, db) => {
     })
     app.post('/apex', (req, res) => {
       let user = req.user
-      db.collection('apex').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
+      let time = (new Date()).toLocaleString()
+
+      db.collection('apex').insert({ name: user.local.username, msg: req.body.msg, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/apex')
@@ -87,7 +91,9 @@ module.exports = (app, passport, db) => {
     })
     app.post('/warzone', (req, res) => {
       let user = req.user
-      db.collection('warzone').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
+      let time = (new Date()).toLocaleString()
+
+      db.collection('warzone').insert({ name: user.local.username, msg: req.body.msg, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/warzone')
@@ -95,7 +101,9 @@ module.exports = (app, passport, db) => {
     })
     app.post('/csgo', (req, res) => {
       let user = req.user
-      db.collection('csgo').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
+      let time = (new Date()).toLocaleString()
+
+      db.collection('csgo').insert({ name: user.local.username, msg: req.body.msg, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/csgo')
@@ -103,7 +111,9 @@ module.exports = (app, passport, db) => {
     })
     app.post('/overwatch', (req, res) => {
       let user = req.user
-      db.collection('overwatch').insert({ name: user.local.username, msg: req.body.msg}, (err, result) => {
+      let time = (new Date()).toLocaleString()
+
+      db.collection('overwatch').insert({ name: user.local.username, msg: req.body.msg, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/overwatch')
