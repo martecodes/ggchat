@@ -28,9 +28,15 @@
           <h3>Chat</h3>
           <% for(var i=0; i<valorant.length; i++) {%>
             <li class="message">
-              <span><strong><%= valorant[i].name%>:</strong></span>
-              <span class="msg"><%= valorant[i].msg %></span>
               <span class="font-weight-light time"><%=valorant[i].time%></span>
+              <span><%= valorant[i].name%>:</span>
+              <span class="msg"><%= valorant[i].msg %></span>
+              <span><%= valorant[i].arrowUp %></span>
+              <span><i class="far fa-arrow-alt-circle-up"></i></span>
+              <span><i class="far fa-arrow-alt-circle-down"></i></span>
+               <% if (user._id) { %>
+              <span><i class="far fa-trash-alt"></i></span>
+              <% } %>
           </li>
           <% } %>
         </ul>
@@ -41,13 +47,10 @@
             <input type="text" placeholder="message" name="msg">
             <button class="btn btn-primary btn-sm" type="submit">Submit</button>
           </form>
-          <div>
-
-          </div>
         </div>
         <% } %>
         
-        
+        <script src="main.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

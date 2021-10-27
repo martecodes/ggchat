@@ -27,8 +27,10 @@
             <h3>Chat</h3>
             <% for(var i=0; i<warzone.length; i++) {%>
                 <li class="message">
-                    <span><strong><%= warzone[i].name%>:<strong></span>
+                    <span><strong><%= warzone[i].name%>:</strong></span>
                     <span class="msg"><%= warzone[i].msg %></span>
+                    <span><i class="far fa-arrow-alt-circle-up"></i></span>
+                    <span><i class="far fa-arrow-alt-circle-down"></i></span>
                     <span class="font-weight-light time"><%=warzone[i].time%></span>
                 </li>
                 <% } %>
@@ -46,7 +48,7 @@
     </div>
     <% } %>
 
-
+        <script src="main.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
