@@ -13,53 +13,62 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-      <h1 class="display-1 text-center">Welcome to the Valorant Chat</h1>
-      <div>
-    
-        <div class="text-center">
-          <a href="/profile" class="btn btn-info btn-sm m-2">Home</a>
-          <a href="/logout" class="btn btn-dark btn-sm m-2">Logout</a>
-        </div>
+  <div class="jumbotron">
+    <h1 class="display-1 text-center">Welcome to the Valorant Chat</h1>
+
+    <div>
+      <div class="text-center">
+        <a href="/profile" class="btn btn-info btn-sm m-2">Home</a>
+        <a href="/logout" class="btn btn-dark btn-sm m-2">Logout</a>
       </div>
+
     </div>
-      <div class="d-flex justify-content-center border">
-        <ul class="messages w-25" style="list-style: none;">
-          <h3>Chat</h3>
-          <% for(var i=0; i<valorant.length; i++) {%>
-            <li class="message">
-              <span class="font-weight-light time"><%=valorant[i].time%></span>
-              <span><%= valorant[i].name%>:</span>
-              <span class="msg"><%= valorant[i].msg %></span>
-              <span><%= valorant[i].arrowUp %></span>
-              <span><i class="far fa-arrow-alt-circle-up"></i></span>
-              <span><i class="far fa-arrow-alt-circle-down"></i></span>
-               <% if (user._id) { %>
-              <span><i class="far fa-trash-alt"></i></span>
-              <% } %>
-          </li>
-          <% } %>
-        </ul>
-        
-        
+  </div>
+  
+  <div class="d-flex flex-column">
+    <div class="w-25 border">
+      <ul class="messages style="list-style: none;">
+        <h3>Chat</h3>
+
         <% if (user._id) { %>
-          <form action="/valorant" method="POST">
-            <input type="text" placeholder="message" name="msg">
-            <button class="btn btn-primary btn-sm" type="submit">Submit</button>
-          </form>
-        </div>
+        <% for(var i=0; i<valorant.length; i++) {%>
+          <li class="message">
+            <span class="font-weight-light time"><%=valorant[i].time%></span>
+            <span><%= valorant[i].name%>:</span>
+            <span class="msg"><%= valorant[i].msg %></span>
+            <span><%= valorant[i].arrowUp %></span>
+            <span><i class="far fa-arrow-alt-circle-up"></i></span>
+            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+            <span><i class="far fa-trash-alt"></i></span>
+            <% } %>
+        </li>
         <% } %>
+      </ul>
+
+    </div>
+    
+    <div class="d-flex align-items-start border w-25">
+      <% if (user._id) { %>
+        <form action="/valorant" method="POST">
+          <input type="text" placeholder="message" name="msg">
+          <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+        </form>
+    </div>
+      <% } %>
+  </div>
+</div>
+  
         
-        <script src="main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="valorant.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>

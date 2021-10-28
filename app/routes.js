@@ -73,7 +73,7 @@ module.exports = (app, passport, db) => {
       let user = req.user
       let time = (new Date()).toLocaleString()
 
-      db.collection('valorant').insert({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
+      db.collection('valorant').insertOne({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/valorant')
@@ -83,7 +83,7 @@ module.exports = (app, passport, db) => {
       let user = req.user
       let time = (new Date()).toLocaleString()
 
-      db.collection('apex').insert({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
+      db.collection('apex').insertOne({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/apex')
@@ -93,7 +93,7 @@ module.exports = (app, passport, db) => {
       let user = req.user
       let time = (new Date()).toLocaleString()
 
-      db.collection('warzone').insert({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
+      db.collection('warzone').insertOne({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/warzone')
@@ -103,7 +103,7 @@ module.exports = (app, passport, db) => {
       let user = req.user
       let time = (new Date()).toLocaleString()
 
-      db.collection('csgo').insert({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
+      db.collection('csgo').insertOne({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/csgo')
@@ -113,16 +113,73 @@ module.exports = (app, passport, db) => {
       let user = req.user
       let time = (new Date()).toLocaleString()
 
-      db.collection('overwatch').insert({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
+      db.collection('overwatch').insertOne({ name: user.local.username, msg: req.body.msg, arrowUp: 0, time}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/overwatch')
       })
     })
-  app.put('/arrowUp', (req, res) => {
-    let user = req.user
+    app.put('/apex', (req, res) => {
+      db.collection('apex')
+      .findOneAndUpdate({msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp + 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+    app.put('/valorant', (req, res) => {
     db.collection('valorant')
-      .findOneAndUpdate({ name: user.local.username, msg: req.body.msg }, {
+      .findOneAndUpdate({msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp + 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+    app.put('/csgo', (req, res) => {
+      db.collection('csgo')
+      .findOneAndUpdate({msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp + 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/overwatch', (req, res) => {
+   
+    db.collection('overwatch')
+      .findOneAndUpdate({ msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp + 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/warzone', (req, res) => {
+    
+    db.collection('warzone')
+      .findOneAndUpdate({ msg: req.body.msg }, {
         $set: {
           arrowUp: req.body.arrowUp + 1
         }
@@ -135,10 +192,70 @@ module.exports = (app, passport, db) => {
       })
   })
 
-  app.put('/arrowDown', (req, res) => {
-    let user = req.user
+  app.put('/valorantDown', (req, res) => {
+    
     db.collection('valorant')
-      .findOneAndUpdate({ name: user.local.username, msg: req.body.msg }, {
+      .findOneAndUpdate({ msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp - 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/apexDown', (req, res) => {
+    
+    db.collection('apex')
+      .findOneAndUpdate({ msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp - 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/csgoDown', (req, res) => {
+  
+    db.collection('csgo')
+      .findOneAndUpdate({ msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp - 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/overwatchDown', (req, res) => {
+  
+    db.collection('overwatch')
+      .findOneAndUpdate({ msg: req.body.msg }, {
+        $set: {
+          arrowUp: req.body.arrowUp - 1
+        }
+      }, {
+        sort: { _id: -1 },
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+  })
+  app.put('/warzoneDown', (req, res) => {
+
+    db.collection('warzone')
+      .findOneAndUpdate({ msg: req.body.msg }, {
         $set: {
           arrowUp: req.body.arrowUp - 1
         }
@@ -151,9 +268,38 @@ module.exports = (app, passport, db) => {
       })
   })
 
-  app.delete('/trash', (req, res) => {
+  app.delete('/valorant', (req, res) => {
     let user = req.user
-    db.collection('valorant').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
+  db.collection('valorant').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
+
+  app.delete('/apex', (req, res) => {
+    let user = req.user
+    db.collection('apex').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
+  app.delete('/csgo', (req, res) => {
+    let user = req.user
+    db.collection('csgo').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
+  app.delete('/overwatch', (req, res) => {
+    let user = req.user
+    db.collection('overwatch').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Message deleted!')
+    })
+  })
+  app.delete('/warzone', (req, res) => {
+    let user = req.user
+    db.collection('warzone').findOneAndDelete({ name: user.local.username, msg: req.body.msg }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
     })

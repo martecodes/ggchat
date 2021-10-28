@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -25,14 +26,17 @@
     <div class="d-flex justify-content-center border">
         <ul class="messages w-25" style="list-style: none;">
             <h3>Chat</h3>
+            <% if (user._id) { %>
             <% for(var i=0; i<warzone.length; i++) {%>
                 <li class="message">
-                    <span><strong><%= warzone[i].name%>:</strong></span>
+                    <span class="font-weight-light time"><%=warzone[i].time%></span>
+                    <span><%= warzone[i].name%>:</span>
                     <span class="msg"><%= warzone[i].msg %></span>
+                    <span><%= warzone[i].arrowUp %></span>
                     <span><i class="far fa-arrow-alt-circle-up"></i></span>
                     <span><i class="far fa-arrow-alt-circle-down"></i></span>
-                    <span class="font-weight-light time"><%=warzone[i].time%></span>
-                </li>
+                    <span><i class="far fa-trash-alt"></i></span>
+                    <% } %>
                 <% } %>
         </ul>
 
@@ -48,7 +52,7 @@
     </div>
     <% } %>
 
-        <script src="main.js"></script>
+        <script src="warzone.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
