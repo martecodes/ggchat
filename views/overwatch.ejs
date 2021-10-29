@@ -18,16 +18,16 @@
         <div>
     
             <div class="text-center">
-                <a href="/profile" class="btn btn-info btn-sm m-2">Home</a>
-                <a href="/logout" class="btn btn-dark btn-sm m-2">Logout</a>
+                <a href="/profile" class="btn btn-sm m-2"id="signup">Home</a>
+                <a href="/logout" class="btn btn-sm m-2"id="login">Logout</a>
             </div>
         </div>
     </div>
     <div class="d-flex justify-content-center border">
-        <ul class="messages w-25" style="list-style: none;">
+        <ul class="messages">
             <h3>Chat</h3>
             <% for(var i=0; i<overwatch.length; i++) {%>
-                <li class="message">
+                <li class="message list">
                     <span class="font-weight-light time"><%=overwatch[i].time%></span>
                     <span><%= overwatch[i].name%>:</span>
                     <span class="msg"><%= overwatch[i].msg %></span>

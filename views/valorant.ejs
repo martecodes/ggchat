@@ -18,27 +18,27 @@
 
     <div>
       <div class="text-center">
-        <a href="/profile" class="btn btn-info btn-sm m-2">Home</a>
-        <a href="/logout" class="btn btn-dark btn-sm m-2">Logout</a>
+        <a href="/profile" class="btn btn-sm m-2"id="signup">Home</a>
+        <a href="/logout" class="btn btn-sm m-2"id="login">Logout</a>
       </div>
 
     </div>
   </div>
   
-  <div class="d-flex flex-column">
-    <div class="w-25 border">
-      <ul class="messages style="list-style: none;">
-        <h3>Chat</h3>
+  <div class="d-flex flex-column align-items-center">
+    <h3>Chat</h3>
+    <div class="border messagesContainer">
+      <ul class="messages">
 
         <% if (user._id) { %>
         <% for(var i=0; i<valorant.length; i++) {%>
-          <li class="message">
+          <li class="message list">
             <span class="font-weight-light time"><%=valorant[i].time%></span>
             <span><%= valorant[i].name%>:</span>
             <span class="msg"><%= valorant[i].msg %></span>
             <span><%= valorant[i].arrowUp %></span>
-            <span><i class="far fa-arrow-alt-circle-up"></i></span>
-            <span><i class="far fa-arrow-alt-circle-down"></i></span>
+            <span><i class="far fa-arrow-alt-circle-up" id="arrowUp"></i></span>
+            <span><i class="far fa-arrow-alt-circle-down" id="arrowDown"></i></span>
             <span><i class="far fa-trash-alt"></i></span>
             <% } %>
         </li>
@@ -47,7 +47,7 @@
 
     </div>
     
-    <div class="d-flex align-items-start border w-25">
+    <div class="d-flex align-items-start border">
       <% if (user._id) { %>
         <form action="/valorant" method="POST">
           <input type="text" placeholder="message" name="msg">
