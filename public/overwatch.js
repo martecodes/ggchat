@@ -4,8 +4,8 @@ const trash = document.getElementsByClassName("fa-trash-alt");
 
 Array.from(arrowUp).forEach(function (element) {
     element.addEventListener('click', function () {
-        const msg = this.parentNode.parentNode.childNodes[5].innerText
-        const arrowUp = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
+        const msg = this.parentNode.parentNode.childNodes[1].innerText
+        const arrowUp = parseFloat(this.parentNode.parentNode.childNodes[3].innerText)
 
         fetch('overwatch', {
             method: 'put',
@@ -27,8 +27,8 @@ Array.from(arrowUp).forEach(function (element) {
 
 Array.from(arrowDown).forEach(function (element) {
     element.addEventListener('click', function () {
-        const msg = this.parentNode.parentNode.childNodes[5].innerText
-        const arrowDown = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
+        const msg = this.parentNode.parentNode.childNodes[1].innerText
+        const arrowDown = parseFloat(this.parentNode.parentNode.childNodes[3].innerText)
         fetch('overwatchDown', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
@@ -49,8 +49,8 @@ Array.from(arrowDown).forEach(function (element) {
 
 Array.from(trash).forEach(function (element) {
     element.addEventListener('click', function () {
-        const name = this.parentNode.parentNode.childNodes[3].innerText
-        const msg = this.parentNode.parentNode.childNodes[5].innerText
+        const name = this.parentNode.parentNode.parentNode.childNodes[1].childNodes[3].innerText
+        const msg = this.parentNode.parentNode.childNodes[1].innerText
         fetch('overwatch', {
             method: 'delete',
             headers: {

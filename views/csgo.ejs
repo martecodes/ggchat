@@ -23,26 +23,31 @@
             </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center border">
-        <ul class="messages">
-            <h3>Chat</h3>
-            <% for(var i=0; i<csgo.length; i++) {%>
-                <li class="message list">
-                    <span class="font-weight-light time"><%=csgo[i].time%></span>
-                    <span><%= csgo[i].name%>:</span>
-                    <span class="msg"><%= csgo[i].msg %></span>
-                    <span><%= csgo[i].arrowUp %></span>
-                    <span><i class="far fa-arrow-alt-circle-up"></i></span>
-                    <span><i class="far fa-arrow-alt-circle-down"></i></span>
-                    <% if (user._id) { %>
-                    <span><i class="far fa-trash-alt"></i></span>
+    <div class="d-flex align-items-center flex-column">
+        <h3>Chat</h3>
+        <div class="border messagesContainer">
+            
+            <ul class="messages">
+                <% if (user._id) { %>
+                <% for(var i=0; i<csgo.length; i++) {%>
+                    <li class="message list">
+                        <span class="font-weight-light time"><%=csgo[i].time%></span>
+                        <span class="nameStyle"><%= csgo[i].name%>:</span>
+                    </li>
+                    <li class="message list">
+                        <span class="msg"><%= csgo[i].msg %></span>
+                        <span><%= csgo[i].arrowUp %></span>
+                        <span><i class="far fa-arrow-alt-circle-up" id="arrowUp"></i></span>
+                        <span><i class="far fa-arrow-alt-circle-down" id="arrowDown"></i></span>
+                        <% if (user._id) { %>
+                        <span><i class="far fa-trash-alt"></i></span>
+                        <% } %>
+                    </li>
                     <% } %>
-                </li>
-                <% } %>
-        </ul>
+            </ul>
+        </div>
 
 
-        <% if (user._id) { %>
             <form action="/csgo" method="POST">
                 <input type="text" placeholder="message" name="msg">
                 <button class="btn btn-primary btn-sm" type="submit">Submit</button>

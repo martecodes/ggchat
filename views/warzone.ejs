@@ -19,29 +19,32 @@
     
             <div class="text-center">
                 <a href="/profile" class="btn btn-sm m-2" id="signup">Home</a>
-                <a href="/logout" class="btn btn-sm m-2" id="logins">Logout</a>
+                <a href="/logout" class="btn btn-sm m-2" id="login">Logout</a>
             </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center border">
-        <ul class="messages">
-            <h3>Chat</h3>
-            <% if (user._id) { %>
-            <% for(var i=0; i<warzone.length; i++) {%>
-                <li class="message list">
-                    <span class="font-weight-light time"><%=warzone[i].time%></span>
-                    <span><%= warzone[i].name%>:</span>
-                    <span class="msg"><%= warzone[i].msg %></span>
-                    <span><%= warzone[i].arrowUp %></span>
-                    <span><i class="far fa-arrow-alt-circle-up"></i></span>
-                    <span><i class="far fa-arrow-alt-circle-down"></i></span>
-                    <span><i class="far fa-trash-alt"></i></span>
+    <div class="d-flex align-items-center flex-column">
+        <h3>Chat</h3>
+        <div class="border messagesContainer">
+
+            <ul class="messages">
+                <% if (user._id) { %>
+                <% for(var i=0; i<warzone.length; i++) {%>
+                    <li class="message list">
+                        <span class="font-weight-light time"><%=warzone[i].time%></span>
+                        <span class="nameStyle"><%= warzone[i].name%>:</span>
+                    </li>
+                    <li class="message list">
+                        <span class="msg"><%= warzone[i].msg %></span>
+                        <span><%= warzone[i].arrowUp %></span>
+                        <span><i class="far fa-arrow-alt-circle-up" id="arrowUp"></i></span>
+                        <span><i class="far fa-arrow-alt-circle-down" id="arrowDown"></i></span>
+                        <span><i class="far fa-trash-alt"></i></span>
+                    </li>
                     <% } %>
-                <% } %>
-        </ul>
+            </ul>
+        </div>
 
-
-        <% if (user._id) { %>
             <form action="/warzone" method="POST">
                 <input type="text" placeholder="message" name="msg">
                 <button class="btn btn-primary btn-sm" type="submit">Submit</button>

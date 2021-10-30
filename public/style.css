@@ -76,16 +76,22 @@ i{
     color: rgb(54,77,99);
 }
 
+.nameStyle{
+    font-weight: bold;
+}
+
 .messages{
     overflow:none;
     height: 300px;
     width: 400px;
     list-style-position: inside;
+    word-wrap: break-word;
 }
+
 
 .messagesContainer{
     width: 430px;
-    overflow: scroll;
+    overflow-y: scroll;
     border-radius: 2%;
 }
 
