@@ -26,6 +26,9 @@
     <div class="d-flex justify-content-center border">
         <ul class="messages">
             <h3>Chat</h3>
+
+            <% if (user._id) { %>
+
             <% for(var i=0; i<apex.length; i++) {%>
                 <li class="message list">
                     <span class="font-weight-light time"><%=apex[i].time%></span>
@@ -42,7 +45,6 @@
         </ul>
 
 
-        <% if (user._id) { %>
             <form action="/apex" method="POST">
                 <input type="text" placeholder="message" name="msg">
                 <button class="btn btn-primary btn-sm" type="submit">Submit</button>
